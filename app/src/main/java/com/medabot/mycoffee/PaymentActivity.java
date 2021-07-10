@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 public class PaymentActivity extends AppCompatActivity {
 
+    //Deklarasi Elemen
     Button bayar;
     View garis1, garis2, garis3, garis4;
     TableRow item1, item2, item3, item4, item5;
@@ -28,6 +29,7 @@ public class PaymentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
 
+        //untuk ambil item meja nama
         nama = getIntent().getExtras().getString("nama");
         meja = getIntent().getExtras().getString("meja");
         jumlah1 = getIntent().getExtras().getString("jumlah1");
@@ -36,6 +38,7 @@ public class PaymentActivity extends AppCompatActivity {
         jumlah4 = getIntent().getExtras().getString("jumlah4");
         jumlah5 = getIntent().getExtras().getString("jumlah5");
 
+        //untuk cari id di layout
         pemesan = findViewById(R.id.pemesan);
         bayar = findViewById(R.id.bayar);
 
@@ -63,8 +66,10 @@ public class PaymentActivity extends AppCompatActivity {
         total4 = findViewById(R.id.total4);
         total5 = findViewById(R.id.total5);
 
+        //untuk set tulisan pemesan di atas
         pemesan.setText("An. " + nama.toUpperCase() + " - " + meja);
 
+        //untuk jumlah item 0 maka garis dan nama item kosong dan ditampilkan dan kalkulasi
         if (jumlah1.equals("") || jumlah1.equals("0")) {
             garis1.setVisibility(View.GONE);
             item1.setVisibility(View.GONE);
@@ -109,8 +114,10 @@ public class PaymentActivity extends AppCompatActivity {
             hasil5 = Integer.parseInt(jumlah5) * 15000;
         }
 
+        //untuk menghitung total dan set tulisan
         total.setText("Rp. " + (hasil1 + hasil2 + hasil3 + hasil4 + hasil5));
 
+        //untuk konfirmasi dan keluarkan notifikasi
         bayar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,6 +143,7 @@ public class PaymentActivity extends AppCompatActivity {
     }
 
     @Override
+    //untuk kembali bawa meja dan nama pemesan ke activity sebelumnya
     public void onBackPressed() {
         Intent intent = new Intent(PaymentActivity.this, PickItemActivity.class);
         intent.putExtra("nama", nama);

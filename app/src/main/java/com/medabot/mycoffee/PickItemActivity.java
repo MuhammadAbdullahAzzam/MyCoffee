@@ -1,4 +1,4 @@
-package com.medabot.mycoffee;
+    package com.medabot.mycoffee;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,7 @@ import android.widget.EditText;
 
 public class PickItemActivity extends AppCompatActivity {
 
+    //untuk deklarasi elemen
     Button pesan;
     EditText jumlah1, jumlah2, jumlah3, jumlah4, jumlah5;
 
@@ -20,6 +21,7 @@ public class PickItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pick_item);
 
+        //untuk ambil jumlah pesanan
         jumlah1 = findViewById(R.id.jumlah1);
         jumlah2 = findViewById(R.id.jumlah2);
         jumlah3 = findViewById(R.id.jumlah3);
@@ -27,6 +29,7 @@ public class PickItemActivity extends AppCompatActivity {
         jumlah5 = findViewById(R.id.jumlah5);
         pesan = findViewById(R.id.pesan);
 
+        //untuk melanjutkan ke activity berikutnya dan mengirimkan data yang dipesan
         pesan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,6 +47,7 @@ public class PickItemActivity extends AppCompatActivity {
     }
 
     @Override
+    //untuk kembali ke halaman awal
     public void onBackPressed() {
         startActivity(new Intent(PickItemActivity.this, MainActivity.class));
         super.onBackPressed();
